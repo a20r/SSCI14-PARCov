@@ -1,0 +1,40 @@
+
+\documentclass{article}
+
+\usepackage{amssymb,amsmath}
+
+\begin{document}
+
+\section{Risk Model}
+
+Risk is modelled as a function, $\mathbb{R}^3 \rightarrow [0, 1]$ which is use
+to determine the risk at every $(x, y, z)$ location within the search space. In
+order to determine risk in 3-space, we obtain a 2-D risk model which models the
+risk at the minimum altitude. This function $R_0 : \mathbb{R}^2 \rightarrow [0,
+1]$ determines what the risk would be at the minimum altitude. This is assumed
+to be given to the algorithm \emph{a priori} or can be determined at any time
+during the iteration of the algorithm. This ground risk, $R_0$, is modelled as
+a lookup table rather than a combination of basis functions in order to give a
+more generic model for risk that can be used in any use case of the algorithm.
+To determine the 3-D risk, $R(x, y, z)$, we perform an exponential decay on the
+given ground risk value, $R_0(x, y)$. 3D risk is defined as follows:
+
+$$ R(x, y, z) = R_0(x, y) \cdot \exp{\left(-\frac{z^2}{K \cdot R_0(x,
+y)^2}\right)}$$
+
+Even though risk in 3D is evaluated and is not simply a lookup table, one can
+be used instead. This representation for 3D risk is ideal for modelling fires,
+detection by hostile agents, or any stimuli that would decrease monotonically
+as the altitude increases.
+
+For the experiments, we have used nine different scenes for the representation
+of the ground risk, $R_0$. To generate these scenes, we used the diamond-square
+algorithm~\cite{DBLP:journals/cacm/FournierFC82} to generate random terrain
+maps that have values from zero to one.  The diamond-square algorithm generates
+realistic random risk scenes that represent the 2D ground level risk as
+anticipated. Random terrain maps have also been used
+in~\cite{DBLP:conf/icra/MurphyN11}.
+
+\bibliographystyle{IEEEtran} \bibliography{mp,plaku,quads,relatedwork}
+
+\end{document}

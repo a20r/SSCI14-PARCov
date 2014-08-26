@@ -48,7 +48,7 @@
 
 \begin{document}
 
-\title{A Planner for Autonomuos Risk-Sensitive Coverage
+\title{A Planner for Autonomous Risk-Sensitive Coverage
   (\textsc{PARCov}) by a\\
 Team of Unmanned Aerial Vehicles}
 
@@ -105,7 +105,7 @@ delivery, target tracking, and many other applications.  UAVs, such as
 ARDrone and AscTec Pelican quadcopters, are becoming more commercially
 available, making them also an economically-feasible option for
 deployment in autonomous aerial missions.
- 
+
 Towards increasing the autonomy of UAVs, this paper describes an
 algorithm for persistent area coverage using multiple cooperative
 quadcopters while accounting for the risk and sensor data quality
@@ -196,7 +196,7 @@ surveillance.
 \label{sec:Problem}
 In the problem setting considered in this paper, a number of
 quadcopters  are required to survey a given area. The
-coverage criteria and the models for  sensor data quality and
+coverage criteria and the models for sensor data quality and
 detection risk are described below.
 
 \paragraph{Area coverage and persistency}
@@ -204,7 +204,7 @@ detection risk are described below.
 equipped with a sensor which is mounted at a fixed angle $\phi$.  The
 team of quadcopters seeks to maximize the area coverage on the
 $xy$-plane, where a point is considered covered if it is sensed by at
-least one of the quadcopters. More specifically, 
+least one of the quadcopters. More specifically,
 the area covered by the quadcopters at time $t$ is given by
 $$
 \Var{SensedArea}_{q_1}(t) \cup \ldots \cup \Var{SensedArea}_{q_n}(t),
@@ -212,7 +212,7 @@ $$ where $n$ denotes the number of quadcopters and
 $\Var{SensedArea}_{q_i}(t)$ denotes the area on the $xy$-plane sensed
 by the $i$-th quadcopter at time $t$.  The experiments
 in this paper consider spotlight sensors, so the sensed area
-corresponds to an ellipse, which is a function of the 
+corresponds to an ellipse, which is a function of the
 position and orientation of the quadcopter, the angle $\phi$ at which
 the sensor is mounted, and the conic aperture $\alpha$.
 Fig.~\ref{fig:cover} provides an illustration of the area covered by
@@ -447,7 +447,7 @@ $
 t = \sum_{(x', y') \in \Var{points}(s)} \Var{WaitTime}(\Symbol{G}, x', y').
 $
 
-This rule has desirable emergent properties for the team of 
+This rule has desirable emergent properties for the team of
 quadcopters.  Since the quadcopters share the same grid $\Symbol{G}$,
 they will act cooperatively to fill the unvisited space without having
 to explicitly coordinate with one another. In particular, each
@@ -470,7 +470,7 @@ This is particularly important for missions
 that combine persistent coverage and target tracking. The
 persistent coverage can be used to determine the positions
 of targets, and a sub-swarm of quadcopters can be deployed
-from the group to track the targets while the rest 
+from the group to track the targets while the rest
 continues to provide coverage.
 
 
@@ -579,7 +579,7 @@ and reducing the detection risk.
 \label{sec:ExpResults}
 
 Experiments are conducted in simulation with an increasing number of
-quadcopters and risk points.  
+quadcopters and risk points.
 
 \subsection{Experimental Setup}
 \subsubsection{Scenes}
@@ -660,7 +660,7 @@ for each of the scenarios. An iteration corresponds to computing one
 move (position and orientation) for each quadcopter
 (Alg.~\ref{algo:planning}:4--8). As shown in
 Fig.~\ref{table:TimeIter}, $\Name$ scales linearly with the number of
-quadcopters. 
+quadcopters.
 
 %\begin{table}
 %\centering
@@ -797,7 +797,7 @@ values.
   sensor is attached to the quadcopter. Shown percentages
 are computed after 250 iterations of the algorithm. Results are
 shown for the medium-size scene with different numbers of risk points and
-quadcopters.} \label{fig:ResCamera} 
+quadcopters.} \label{fig:ResCamera}
 \end{figure}
 
 
