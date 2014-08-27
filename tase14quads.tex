@@ -116,6 +116,72 @@ cost}
 
 \end{figure}
 
+\section{Results \& Discussion}
+
+To determine how well Rover performed, we constructed three different
+experiments that tested various attributes about the implementation. We have
+also gathered four different metrics to show the performance of the
+implementation. To gather the experimental data, we decided to use three
+different scene sizes. For each of the scene sizes, we used 3 different ground
+risk surfaces created using the diamond square algorithm. The experiments
+developed are described below and after each description is the associated data
+and discussion.
+
+\subsection{Metrics}
+
+The metrics that we are gathering in the experiments are used to show that the
+algorithm minimizes risk, maximizes the sensor quality, fills the search space
+quickly and persistently, and that the algorithm can be used in a real time
+setting. The metrics that are being collected are the average associated risk,
+the average associated sensor quality, the average amount of iterations it
+takes to reach 90\% cumulative coverage, and the amount of time per iteration.
+
+\subsubsection{Average Associated Risk}
+
+This metric describes the average risk incurred by the quadrotors. Each of
+quadrotors is experiencing some sort of risk. By averaging the risk associated
+with each of the quadrotors, we are able to quantify how much risk is being
+incurred by the swarm. By showing that this metric remains low, indicates that
+the algorithm is completing its proposed task.
+
+\subsubsection{Average Associated Sensor Quality}
+
+Each quadrotor also is is able to see its footprint with an associated sensor
+quality. To determine the sensor quality being collected by the swarm we could
+just sum up the maximum sensor quality for each footprint, however to put the
+algorithm under more scrutiny, we are averaging it, which provides us a lower
+value. This metric should remain high for all the experiments to show that the
+algorithm is performing as expected.
+
+
+\subsubsection{Persistent Cumulative Coverage}
+
+To show that the proposed approach persistently covers the search area, we
+gathered the number of iterations for the algorithm to reach 90\% cumulative
+coverage throughout progression of each run. This means that once the algorithm
+reached 90\% cumulative coverage, we recorded the number of iterations it took,
+and reset the cumulative coverage back to zero. We then averaged the number of
+iterations it took. This is a good metric for showing persistent coverage
+because it captures how long it takes for the agents to fill the space from
+many different initial configurations. If there is a low deviation between the
+values, then we know that the initial configurations of the quadrotors had
+little to no effect on the persistence of coverage. Also, this metric can be
+used to to determine how quickly the quadrotors filled the area on average.
+This becomes the standard performance metric used for the algorithm.
+
+\subsubsection{Time per Iteration}
+
+Since this algorithm is to be used in a real-time setting, we need to show that
+each iteration (or each update of the quadrotors' positions) shouldn't take too
+long. This metric shows the feasibility of the approach in a real-time
+scenario.
+
+\subsection{Performance as function of the number of quadrotors}
+
+To determine the performance as a function of the number of quadrotors in the
+swarm, we ran the algorithm for 1000 iterations on each of the nine scenes
+using a swarm size of $1, 5, 10, \cdots, 35$.
+
 \bibliographystyle{IEEEtran} \bibliography{mp,plaku,quads,relatedwork}
 
 \end{document}
