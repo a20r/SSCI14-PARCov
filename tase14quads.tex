@@ -180,7 +180,62 @@ scenario.
 
 To determine the performance as a function of the number of quadrotors in the
 swarm, we ran the algorithm for 1000 iterations on each of the nine scenes
-using a swarm size of $1, 5, 10, \cdots, 35$.
+using a swarm size of $1, 5, 10, \cdots, 35$. The purpose of this experiment is
+to show that the algorithm scales gracefully as the number of quadrotors used
+in the swarm increases. The average risk, average sensor quality, and average
+number of iterations between 90\% cumulative coverage were collected to show
+how the algorithm scales as the number of quadrotors increases.
+
+Fig.~\ref{fig:nqs_r_sq} shows the average risk and sensor quality for the swarm
+as the number of quadrotors increased. For the graph, we averaged the average
+risk for each of the three scenes for each of the scene sizes. This allows us
+to get a better picture of the trend as the number of quadrotors increases.
+Fig.~\ref{fig:nqs_r_sq} shows the number of quadrotors has little effect on the
+average associated risk and average sensor quality. We also see that the size
+of the scene has little effect on these metrics. The figure shows that the
+average associated risk is under 0.1 (10\% risk) for any number of quadrotors
+and that the average sensor quality is over 0.9 (90\% sensor quality) for any
+number of quadrotors. Therefore, the algorithm is meeting two of the three
+prescribed task, maintaining high sensor quality whilst maintaining low risk.
+
+\begin{figure}[h!]
+
+    \includegraphics[width=1\columnwidth]{tasefigs/perf_quads_sq_risk.png}
+
+    \caption{Figure showing how risk and sensor quality relate to the number of
+    quadrotors}
+
+    \label{fig:nqs_r_sq}
+
+\end{figure}
+
+We also needed to quantify the persistence of the coverage as the number of
+quadrotors increased. This is shown in Fig.~\ref{fig:nqs_cum}. We can see that
+average number of iterations it takes for the algorithm to reach 90\%
+cumulative coverage decreases exponentially as the number of quadrotors
+increases then converges. We also see that the algorithm fills the area more
+quickly for smaller scene sizes, as expected. The graph shows that the
+algorithm is able to provide persistent coverage over a given area. To give
+some context for this graph, if the average cumulative convergence metric was
+100 iterations for 5 quadrotors on a 20m by 20m area and it takes 0.5s per
+iteration and we run the algorithm for 1000 iterations, the quadrotors reach
+90\% cumulative coverage 10 times over this 400~$m^2$ area. On average it takes
+50s to reach this 90\% convergence. Also keep in mind that the speed of the
+quadrotors was capped at 0.4 meters per iteration, or in this case, 0.8 meters
+per second. This quick convergence combined with the data from
+Fig.~\ref{fig:nqs_r_sq} shows that the algorithm is able to maintain persistent
+coverage of the area whilst maintaining low risk and high sensor quality.
+
+\begin{figure}[h!]
+
+    \includegraphics[width=1\columnwidth]{tasefigs/perf_quads.png}
+
+    \caption{Figure showing the average number of iterations needed to reach
+        90\% cumulative coverage}
+
+    \label{fig:nqs_cum}
+
+\end{figure}
 
 \bibliographystyle{IEEEtran} \bibliography{mp,plaku,quads,relatedwork}
 
