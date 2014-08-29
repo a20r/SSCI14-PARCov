@@ -85,34 +85,51 @@ For our implementation we defined $\delta$ as,
 $$\delta(\upsilon, r) = \max{\Upsilon} - \upsilon + 100 \cdot r$$
 
 An instance of the uncertainty surface, $\Upsilon$, is shown in
-Fig~\ref{fig:unc} where the $x, y$ coordinate represents the 2D position within
+Fig~\ref{fig:cost} where the $x, y$ coordinate represents the 2D position within
 the workspace and the color represents the level of uncertainty. Notice the two
 dark blue ellipses with low uncertainty. That is the current sensor footprint
 of the quadrotors at the time at which the snapshot was taken.
 Fig.~\ref{fig:cost} shows a snapshot of the cost surface which is created by
 combining the risk surface shown in Fig.~\ref{fig:risk} and the uncertainty
-surface shown in Fig.~\ref{fig:unc} using the $\delta$ combination function
+surface shown in Fig.~\ref{fig:cost} using the $\delta$ combination function
 used in our implementation.
 
 \begin{figure}[h!]
 
-    \includegraphics[width=1\columnwidth]{tasefigs/uncertainty.png}
+    \includegraphics[width=0.49\columnwidth]{tasefigs/uncertainty.png}
+    \includegraphics[width=0.49\columnwidth]{tasefigs/costsurf.png}
 
-    \caption{Uncertainty surface where red represents higher uncertainty}
+    \caption{The two images show the uncertainty surface and the cost surface
+    respectively. The cost surface is a combination of the risk shown in
+    Fig.~\ref{fig:risk} and the uncertainty surface.}
 
-    \label{fig:unc}
+    \label{fig:cost}
 
 \end{figure}
 
-\begin{figure}[h!]
+Fig.~\ref{fig:together} shows snapshots of the algorithm in sequence. The
+figures show iteration 1, 25, 50, and 100. These figures show the
+representation of the uncertainty surface and the cost surface. As the
+algorithm progresses the uncertainty of the area changes and so does the
+associated cost. These surfaces are vital for the planning of the quadrotors.
 
-    \includegraphics[width=1\columnwidth]{tasefigs/costsurf.png}
+\begin{figure}[ht]
 
-    \caption{Cost surface which is a combination of the uncertainty surface
-    in Fig.~\ref{fig:unc} and Fig.~\ref{fig:risk} where red represents higher
-cost}
+    \centering
+    \includegraphics[width=0.24\linewidth]{tasefigs/grid1.png}
+    \includegraphics[width=0.24\linewidth]{tasefigs/grid2.png}
+    \includegraphics[width=0.24\linewidth]{tasefigs/grid3.png}
+    \includegraphics[width=0.24\linewidth]{tasefigs/grid4.png} \\
+    \includegraphics[width=0.24\linewidth]{tasefigs/cost1.png}
+    \includegraphics[width=0.24\linewidth]{tasefigs/cost2.png}
+    \includegraphics[width=0.24\linewidth]{tasefigs/cost3.png}
+    \includegraphics[width=0.24\linewidth]{tasefigs/cost4.png}
 
-    \label{fig:cost}
+    \caption{Shows how the uncertainty surface and the cost surface change
+        as the algorithm progresses. These surfaces are used to determine
+        the new position of the quadrotors}
+
+    \label{fig:together}
 
 \end{figure}
 
@@ -209,6 +226,17 @@ prescribed task, maintaining high sensor quality whilst maintaining low risk.
 
 \end{figure}
 
+\begin{figure}[h!]
+
+    \includegraphics[width=1\columnwidth]{tasefigs/perf_quads.png}
+
+    \caption{Figure showing the average number of iterations needed to reach
+        90\% cumulative coverage}
+
+    \label{fig:nqs_cum}
+
+\end{figure}
+
 We also needed to quantify the persistence of the coverage as the number of
 quadrotors increased. This is shown in Fig.~\ref{fig:nqs_cum}. We can see that
 average number of iterations it takes for the algorithm to reach 90\%
@@ -226,16 +254,56 @@ per second. This quick convergence combined with the data from
 Fig.~\ref{fig:nqs_r_sq} shows that the algorithm is able to maintain persistent
 coverage of the area whilst maintaining low risk and high sensor quality.
 
+\section{Performance as a function of control noise}
+
+In order to determine if the algorithm would be able to withstand an acceptable
+amount of error in the controller, we have conducted experiments to test the
+performance by changing the amount of noise that is present in the simulated
+proportional-integral-derivative (PID) controller. We did this by adding
+Gaussian noise to the control output of the PID controller. The noise was
+quantified by altering the standard deviation of the Gaussian function. For the
+experiments, the mean for the Gaussian was set to zero and the standard
+deviation was set from 0 to 0.6 meters with a step of 0.2 meters. This range of
+values seemed to be an accurate representation of the control noise present on
+the AscTec Pelicans we used for the practical experimentation. For the
+experiments, only one scene size was used ($1500 \times 1500$) but three
+different scenes of that size were used. The number of quads used was 10, 20,
+and 30 which gave a good overall depiction of the algorithm. The resultant
+performance information was gathered and averaged. Fig.~\ref{fig:res_cn_r_sq}
+shows trends for the three different swarm sizes that were used and how the
+control noise affected the risk and sensor quality.
+
 \begin{figure}[h!]
 
-    \includegraphics[width=1\columnwidth]{tasefigs/perf_quads.png}
+    \includegraphics[width=1\columnwidth]{tasefigs/cn_sq_risk.png}
 
-    \caption{Figure showing the average number of iterations needed to reach
-        90\% cumulative coverage}
+    \caption{The trend shows how the control noise can affect the risk and
+        sensor quality performance of the algorithm for different swarm sizes}
 
-    \label{fig:nqs_cum}
+    \label{fig:res_cn_r_sq}
 
 \end{figure}
+
+Fig.~\ref{fig:res_cn_r_sq} shows that the control noise does not affect the
+performance of the algorithm in terms of the associated sensor quality and
+risk. Since the algorithm is purely reactive, we can see that within an
+acceptable amount of noise, that the algorithm is still able to perform well
+based on the metrics we have used.
+
+\begin{figure}
+
+    \includegraphics[width=1\columnwidth]{tasefigs/perf_cn.png}
+
+    \caption{The trend shows how the control noise affects the cumulative
+    coverage rate}
+
+    \label{fig:res_perf_cn}
+
+\end{figure}
+
+Fig.~\ref{fig:res_perf_cn} shows that the control noise does not affect the how
+persistent the coverage is. This is yet another benefit of the algorithm being
+purely reactive.
 
 \bibliographystyle{IEEEtran} \bibliography{mp,plaku,quads,relatedwork}
 
