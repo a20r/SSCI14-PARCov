@@ -188,13 +188,12 @@ the algorithm is completing its proposed task.
 
 \subsubsection{Average Associated Sensor Quality}
 
-Each quadrotor also is is able to see its footprint with an associated sensor
-quality. To determine the sensor quality being collected by the swarm we could
-just sum up the maximum sensor quality for each footprint, however to put the
-algorithm under more scrutiny, we are averaging it, which provides us a lower
-value. This metric should remain high for all the experiments to show that the
-algorithm is performing as expected.
-
+The average associated sensor quality was acquired by breaking the workspace
+into a grid. For each cell in the grid, we record the maximum sensor quality
+out of all the quadrotors that are currently viewing that cell. For a unified
+metric, we then average all the sensor quality values for all the grid cells
+that are currently being covered. This gives an accurate representation of the
+average sensor quality for the swarm.
 
 \subsubsection{Persistent Cumulative Coverage}
 
@@ -236,7 +235,7 @@ Fig.~\ref{fig:nqs_r_sq} shows the number of quadrotors has little effect on the
 average associated risk and average sensor quality. We also see that the size
 of the scene has little effect on these metrics. The figure shows that the
 average associated risk is under 0.1 (10\% risk) for any number of quadrotors
-and that the average sensor quality is over 0.9 (90\% sensor quality) for any
+and that the average sensor quality is over 0.6 (60\% sensor quality) for any
 number of quadrotors. Therefore, the algorithm is meeting two of the three
 prescribed task, maintaining high sensor quality whilst maintaining low risk.
 
@@ -271,11 +270,11 @@ quickly for smaller scene sizes, as expected. The graph shows that the
 algorithm is able to provide persistent coverage over a given area. To give
 some context for this graph, if the average cumulative convergence metric was
 100 iterations for 5 quadrotors on a 20m by 20m area and it takes 0.5s per
-iteration and we run the algorithm for 1000 iterations, the quadrotors reach
-90\% cumulative coverage 10 times over this 400~$m^2$ area. On average it takes
-50s to reach this 90\% convergence. Also keep in mind that the speed of the
-quadrotors was capped at 0.4 meters per iteration, or in this case, 0.8 meters
-per second. This quick convergence combined with the data from
+iteration and we run the algorithm for 750 iterations, the quadrotors reach
+90\% cumulative coverage 7.5 times over this 400~$m^2$ area. On average it
+takes 50s to reach this 90\% convergence. Also keep in mind that the speed of
+the quadrotors was capped at 0.4 meters per iteration, or in this case, 0.8
+meters per second. This quick convergence combined with the data from
 Fig.~\ref{fig:nqs_r_sq} shows that the algorithm is able to maintain persistent
 coverage of the area whilst maintaining low risk and high sensor quality.
 
@@ -329,6 +328,33 @@ based on the metrics we have used.
 Fig.~\ref{fig:res_perf_cn} shows that the control noise does not affect the how
 persistent the coverage is. This is yet another benefit of the algorithm being
 purely reactive.
+
+\section{Computational Efficiency}
+
+\begin{figure}[h!]
+
+    \centering
+    \includegraphics[width=0.49\columnwidth]{tasefigs/comp_eff.png}
+    \includegraphics[width=0.49\columnwidth]{tasefigs/comp_eff_per_quad.png}
+
+    \caption{The first figure shows how the amount of time per iteration
+    increases as the number of quadrotors in the swarm increases. The
+    second figure shows how the amount of time per iteration per quadrotor
+    changes as a function of the number of quadrotors.}
+
+    \label{fig:comp_eff}
+
+\end{figure}
+
+In order to show that the algorithm can run in a real-time scenario we have
+graphed the how long each iteration takes to execute as a function as the size
+of the swarm increases. The figure on the left in Fig.~\ref{fig:comp_eff} shows
+this trend.  We see a linear increase in the amount of time to plan every the
+entire swarm for each iteration. The figure on the right in
+Fig.~\ref{fig:comp_eff} shows how the time per iteration per quadrotor
+increases as the number of quads in the swarm increases. We see that if we used
+a decentralized approach, the amount of time per iteration becomes quite
+manageable.
 
 \bibliographystyle{IEEEtran} \bibliography{mp,plaku,quads,relatedwork}
 
