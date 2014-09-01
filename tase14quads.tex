@@ -96,8 +96,8 @@ used in our implementation.
 
 \begin{figure}[h!]
 
-    \includegraphics[width=0.49\columnwidth]{tasefigs/uncertainty.png}
-    \includegraphics[width=0.49\columnwidth]{tasefigs/costsurf.png}
+    \includegraphics[width=0.49\columnwidth]{tasefigs/grid3.png}
+    \includegraphics[width=0.49\columnwidth]{tasefigs/cost3.png}
 
     \caption{The two images show the uncertainty surface and the cost surface
     respectively. The cost surface is a combination of the risk shown in
@@ -157,6 +157,20 @@ Fig.~\ref{fig:seq} shows how the quadrotors fill the space whilst reducing the
 frequency of visit to high risk areas whilst maintaining persistent coverage
 over low risk areas. This figure is a sequence of images that shows how the
 algorithm progresses.
+
+\begin{figure}[ht]
+
+    \centering
+    \includegraphics[width=1\linewidth]{tasefigs/trajsim.png}
+
+    \caption{Shows the trajectories of two quadrotors (the red and blue lines)
+    performing the algorithm through the search space. Notice that the
+    quadrotors stay in low risk areas and increase their height above the
+    high risk regions.}
+
+    \label{fig:trajsim}
+
+\end{figure}
 
 \section{Results \& Discussion}
 
@@ -371,6 +385,18 @@ ROS is a open-source middleware combined with software libraries and tools to
 build robotic applications. ZeroMQ-ROS is a middleware for controlling a swarm
 using a ROS multi-master architecture. The control commands were sent over WiFi
 through a socket to each of the quadrotors.
+
+\begin{figure}[ht]
+
+    \centering
+    \includegraphics[width=1\columnwidth]{tasefigs/trajpractical.png}
+
+    \caption{Shows the trajectories for the practical experiments that were
+        run using the AscTec Pelicans at the Laboratory for Autonomous Systems
+    Research at the Naval Research Laboratory. The oscillations shown are
+    caused by the control noise.}
+
+\end{figure}
 
 \bibliographystyle{IEEEtran} \bibliography{mp,plaku,quads,relatedwork}
 
