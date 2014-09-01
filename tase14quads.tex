@@ -278,7 +278,7 @@ meters per second. This quick convergence combined with the data from
 Fig.~\ref{fig:nqs_r_sq} shows that the algorithm is able to maintain persistent
 coverage of the area whilst maintaining low risk and high sensor quality.
 
-\section{Performance as a function of control noise}
+\subsection{Performance as a function of control noise}
 
 In order to determine if the algorithm would be able to withstand an acceptable
 amount of error in the controller, we have conducted experiments to test the
@@ -329,7 +329,7 @@ Fig.~\ref{fig:res_perf_cn} shows that the control noise does not affect the how
 persistent the coverage is. This is yet another benefit of the algorithm being
 purely reactive.
 
-\section{Computational Efficiency}
+\subsection{Computational Efficiency}
 
 \begin{figure}[h!]
 
@@ -355,6 +355,22 @@ Fig.~\ref{fig:comp_eff} shows how the time per iteration per quadrotor
 increases as the number of quads in the swarm increases. We see that if we used
 a decentralized approach, the amount of time per iteration becomes quite
 manageable.
+
+\subsection{Practical Experiments}
+
+We tested the algorithm at the Laboratory for Autonomous Systems Research
+located at the Naval Research Laboratory in Washington DC\@. We used two AscTec
+Pelican quadrotors that were operated in a 5.2 meter by 5.2 meter area
+surrounded by 10 Vicon motion capture cameras. The quadrotors were equipped
+with with passive motion capture markers which were seen by the Vicon cameras.
+The Vicon cameras have LEDs which were used to illuminate the passive markers.
+The 3D positions and the orientations of the quadrotors were sent to a laptop
+which uses the Robotic Operating System (ROS) and a swarm middleware called
+ZeroMQ-ROS to compute the control commands and to send them to the vehicles.
+ROS is a open-source middleware combined with software libraries and tools to
+build robotic applications. ZeroMQ-ROS is a middleware for controlling a swarm
+using a ROS multi-master architecture. The control commands were sent over WiFi
+through a socket to each of the quadrotors.
 
 \bibliographystyle{IEEEtran} \bibliography{mp,plaku,quads,relatedwork}
 
