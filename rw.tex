@@ -1,0 +1,71 @@
+\documentclass{article}
+
+\usepackage{amssymb,amsmath}
+
+\usepackage{graphicx}
+
+\begin{document}
+
+\section{DBLP:conf/icra/MurphyN11~\cite{DBLP:conf/icra/MurphyN11}}
+
+Uses the ALT algorithm and risk heuristics to guide the search over
+probabilistic cost maps. This is the paper that uses random terrain generation
+as to make the risk maps.
+
+\section{DBLP:journals/cacm/FournierFC82~\cite{DBLP:journals/cacm/FournierFC82}}
+
+Paper that describes the diamond square algorithm for random risk map
+generation.
+
+\section{koenig1994make \cite{koenig1994make}}
+
+Describes how to adapt a reactive planner that can sacrifice the probability of
+goal achievement to minimize risk.
+
+\section{beard2006decentralized~\cite{beard2006decentralized}}
+
+A decentralized approach for fixed wing aerial surveillance. Nothing too
+special in this paper besides it showing that there is a need for this sort of
+thing.
+
+\section{hussein2007effective~\cite{hussein2007effective}}
+
+The paper shows that flocking (so simple local rules) can be used to promote
+effective sensor coverage of an area. Also the paper assures the reader that
+the robots will avoid contact.
+
+\section{alexis2009coordination~\cite{alexis2009coordination}}
+
+This paper is a good reference and shows why risk sensitive path planning is
+needed. Quadrotors are used to perform surveillance using UAVs for forest
+fires. The quadrotors use their measurements to avoid random windgusts. This
+paper is focused on using sensors to predict the movement of the fire.
+
+\section{bethke2009multi~\cite{bethke2009multi}}
+
+This paper provides a solution to the persistent surveillance problem using a
+group of UAVs. The paper extends the problem formulation to account for
+stricter communication constraints and stochastic sensor failure models.
+Basically this paper shows how a group of UAVs can monitor their health,
+account for sensor failures, and still maintain persistent coverage.
+
+
+\section{michael2011persistent~\cite{michael2011persistent}}
+
+This paper describes the system architecture for persistent sensor coverage
+using a swarm of micro aerial vehicles (MAVs)
+
+\section{stump2011multi~\cite{stump2011multi}}
+
+This paper models the persistent surveillance problem as a discrete vehicle
+routing problem and uses advances in operations research and logistics to solve
+it.
+
+\section{julian2011towards~\cite{julian2011towards}}
+
+This extended abstract discusses a unifying information theoretic framework for
+multi-robot exploration and surveillance.
+
+\bibliographystyle{IEEEtran} \bibliography{rw}
+
+\end{document}
