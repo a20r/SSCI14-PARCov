@@ -84,6 +84,28 @@ dependent cost variance". The search algorithm allows for runtime adjustments
 for risk-sensitivity. The results show that policies can be learned using very
 little experimental trials that are flexible and risk sensitive.
 
+\section{Real Experiments}
+
+The quadrotors speed was limited in software to 0.5 m / s in the x-y plane and
+0.5 m / s in the z axis. The algorithm ran for 140s and completed 6200
+iterations which means the quadrotors had an update frequency of 44Hz. This is
+more than acceptable for \emph{in situ} applications.
+
+\section{About the controller}
+
+The PID controller used in simulation is similar to the one used in the AscTec
+Pelican. The use of the PID controller in simulation mimics the control stack
+on the AscTec Pelican. Firstly, a velocity is determined by computing a
+heading, converting it to a unit vector, and multiplying by a desired speed
+(the maximum speed). This then gets converted into a waypoint and this waypoint
+is fed into the PID controller. This is how the control stack of the AscTec
+Pelican works deep down inside.
+
+\section{The computer I used}
+
+The experiments were run on a MacBook Pro with 8GB of RAM and a Intel® Core™
+i7-3520M CPU @ 2.90GHz × 4 processor running a 64-bit Ubuntu 14.04.
+
 \bibliographystyle{IEEEtran} \bibliography{rw}
 
 \end{document}
